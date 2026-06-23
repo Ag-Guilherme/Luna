@@ -1,19 +1,4 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                body {
-                  background-color: white; /* Ensure the iframe has a white background */
-                }
-
-                
-              </style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -82,27 +67,7 @@
             text-transform: uppercase; letter-spacing: 0.8px;
         }
 
-        .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-
-        .icon-btn {
-            padding: 8px 12px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .icon-btn:hover {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border-color: var(--accent);
-        }
+        .header-actions { display: flex; gap: 8px; align-items: center; }
 
         .mode-switcher {
             display: flex; gap: 4px;
@@ -121,6 +86,26 @@
 
         .mode-btn.active { background: var(--accent); color: white; }
         .mode-btn:hover:not(.active) { background: var(--bg-secondary); color: var(--text-primary); }
+
+        .config-btn {
+            padding: 8px 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .config-btn:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--accent);
+        }
 
         .main-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
 
@@ -273,10 +258,10 @@
         }
 
         .info-banner {
-            background: rgba(106, 168, 224, 0.1);
-            border: 1px solid rgba(106, 168, 224, 0.3);
+            background: rgba(106, 191, 123, 0.08);
+            border: 1px solid rgba(106, 191, 123, 0.3);
             border-radius: 8px; padding: 12px 16px;
-            color: #6aa8e0; font-size: 13px;
+            color: var(--success); font-size: 13px;
             margin-bottom: 16px;
         }
 
@@ -321,8 +306,6 @@
 
         .form-input:focus, .form-select:focus { border-color: var(--accent); }
 
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
         .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 24px; }
 
         .btn {
@@ -336,66 +319,51 @@
         .btn-primary:hover { background: var(--accent-hover); }
         .btn-secondary { background: var(--bg-tertiary); color: var(--text-primary); border-color: var(--border); }
         .btn-secondary:hover { background: var(--bg-primary); }
-        .btn-danger { background: transparent; color: var(--error); border-color: var(--error); }
-        .btn-danger:hover { background: rgba(224, 106, 106, 0.1); }
 
-        .status-indicator {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 4px 10px; border-radius: 12px;
-            font-size: 11px; font-weight: 500;
-        }
-
-        .status-ok { background: rgba(106, 191, 123, 0.15); color: var(--success); }
-        .status-warn { background: rgba(224, 176, 96, 0.15); color: #e0b060; }
-        .status-error { background: rgba(224, 106, 106, 0.15); color: var(--error); }
-
-        .tab-bar {
-            display: flex; gap: 4px;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 20px;
-        }
-
-        .tab {
-            padding: 8px 16px;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
+        .provider-card {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
             cursor: pointer;
-            font-size: 13px;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
             transition: all 0.2s;
+            margin-bottom: 12px;
         }
 
-        .tab.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
+        .provider-card:hover { border-color: var(--accent); }
+        .provider-card.selected { border-color: var(--success); background: rgba(106, 191, 123, 0.05); }
+
+        .provider-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
         }
 
-        .tab:hover:not(.active) { color: var(--text-secondary); }
+        .provider-card-title {
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .provider-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-        .connection-test {
-            padding: 10px 12px;
-            border-radius: 8px;
+        .badge-free { background: rgba(106, 191, 123, 0.2); color: var(--success); }
+        .badge-key { background: rgba(224, 176, 96, 0.2); color: #e0b060; }
+
+        .provider-card-desc {
             font-size: 12px;
-            margin-top: 8px;
-            display: none;
-        }
-        .connection-test.success {
-            display: block;
-            background: rgba(106, 191, 123, 0.1);
-            border: 1px solid var(--success);
-            color: var(--success);
-        }
-        .connection-test.error {
-            display: block;
-            background: rgba(224, 106, 106, 0.1);
-            border: 1px solid var(--error);
-            color: var(--error);
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
         @media (max-width: 768px) {
@@ -405,7 +373,6 @@
             .chat-input-container, .image-prompt-section { padding: 16px; }
             .image-gallery { grid-template-columns: 1fr; }
             .image-prompt-wrapper { flex-direction: column; }
-            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -420,12 +387,11 @@
                 </div>
             </div>
             <div class="header-actions">
-                <span id="statusBadge" class="status-indicator status-warn">⚙️ Configurar</span>
                 <div class="mode-switcher">
                     <button class="mode-btn active" data-mode="chat">💬 Chat</button>
                     <button class="mode-btn" data-mode="image">🎨 Imagem</button>
                 </div>
-                <button class="icon-btn" id="settingsBtn" title="Configurações">
+                <button class="config-btn" id="settingsBtn" title="Configurações">
                     ⚙️ <span>Config</span>
                 </button>
             </div>
@@ -439,7 +405,7 @@
                         <div class="empty-state">
                             <div class="empty-state-icon">🌙</div>
                             <h3>Converse com a Luna</h3>
-                            <p>Digite uma mensagem para começar. Clique em ⚙️ para configurar.</p>
+                            <p>100% grátis, sem necessidade de API key! Clique em ⚙️ Config para trocar o provider.</p>
                         </div>
                     </div>
                     <div class="chat-input-container">
@@ -466,8 +432,8 @@
             <div class="view" id="imageView">
                 <div class="image-container">
                     <div class="image-prompt-section">
-                        <div class="info-banner" id="imageInfoBanner">
-                            🎨 Imagens geradas via <strong>Pollinations.ai</strong> — gratuito, sem necessidade de API key!
+                        <div class="info-banner">
+                            🎨 Imagens geradas via <strong>Pollinations.ai</strong> — 100% gratuito, sem necessidade de API key!
                         </div>
                         <div class="image-prompt-wrapper">
                             <input 
@@ -500,69 +466,63 @@
     <div class="modal-overlay" id="settingsModal">
         <div class="modal">
             <h2>⚙️ Configurações</h2>
-            <p class="modal-subtitle">Configure como a Luna se conecta às IAs</p>
+            <p class="modal-subtitle">Escolha como a Luna se conecta às IAs</p>
 
-            <div class="tab-bar">
-                <button class="tab active" data-tab="backend">🖥️ Backend (fcc-server)</button>
-                <button class="tab" data-tab="direct">🔑 API Direta</button>
-            </div>
+            <div class="form-group">
+                <label class="form-label">Provider de Chat</label>
 
-            <!-- Tab: Backend fcc-server -->
-            <div class="tab-content active" id="tab-backend">
-                <div class="info-banner" style="margin-bottom: 20px;">
-                    💡 Use seu <strong>fcc-server</strong> (Free Claude Code) como proxy. Ele traduz para Anthropic, OpenAI, Ollama, etc.
+                <div class="provider-card selected" data-provider="pollinations">
+                    <div class="provider-card-header">
+                        <div class="provider-card-title">
+                            🌟 Pollinations (Padrão)
+                            <span class="provider-badge badge-free">GRÁTIS</span>
+                        </div>
+                    </div>
+                    <div class="provider-card-desc">
+                        100% gratuito, sem API key, sem cadastro. Usa modelos como OpenAI GPT e outros. Funciona direto do navegador!
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">URL do Backend</label>
-                    <input type="text" class="form-input" id="backendUrlInput" placeholder="http://localhost:3000 ou https://seu-server.railway.app">
-                    <p class="form-hint">Endereço onde seu fcc-server está rodando. O frontend vai chamar <code>/v1/responses</code> neste servidor.</p>
+                <div class="provider-card" data-provider="groq">
+                    <div class="provider-card-header">
+                        <div class="provider-card-title">
+                            ⚡ Groq
+                            <span class="provider-badge badge-free">GRÁTIS</span>
+                        </div>
+                    </div>
+                    <div class="provider-card-desc">
+                        Super rápido, tier gratuito generoso. Requer API key gratuita (Llama 3.3, Mixtral).
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Modelo (opcional)</label>
-                    <input type="text" class="form-input" id="backendModelInput" placeholder="anthropic/claude-sonnet-4-20250514">
-                    <p class="form-hint">Formato: <code>provider/model</code>. Ex: <code>openrouter/anthropic/claude-sonnet-4-20250514</code>, <code>ollama/llama3</code></p>
+                <div class="provider-card" data-provider="openrouter">
+                    <div class="provider-card-header">
+                        <div class="provider-card-title">
+                            🌐 OpenRouter
+                            <span class="provider-badge badge-free">GRÁTIS</span>
+                        </div>
+                    </div>
+                    <div class="provider-card-desc">
+                        Acesso a Claude, GPT-4, Llama e mais. Tem modelos gratuitos. Requer API key.
+                    </div>
                 </div>
 
-                <button class="btn btn-secondary" id="testBackendBtn" style="width: 100%;">
-                    🔌 Testar conexão
-                </button>
-                <div class="connection-test" id="backendTestResult"></div>
-            </div>
-
-            <!-- Tab: API Direta -->
-            <div class="tab-content" id="tab-direct">
-                <div class="info-banner" style="margin-bottom: 20px;">
-                    🔑 Use APIs diretamente do navegador. Requer que o provider permita CORS.
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Provider</label>
-                    <select class="form-select" id="providerSelect">
-                        <option value="openrouter">OpenRouter (recomendado)</option>
-                        <option value="openai">OpenAI</option>
-                        <option value="anthropic">Anthropic</option>
-                        <option value="groq">Groq (rápido e gratuito)</option>
-                    </select>
-                    <p class="form-hint" id="providerHint"></p>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">API Key</label>
-                    <input type="password" class="form-input" id="apiKeyInput" placeholder="sk-or-... ou sk-...">
-                    <p class="form-hint">Sua key fica salva apenas no seu navegador (localStorage).</p>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Modelo</label>
-                    <input type="text" class="form-input" id="modelInput" placeholder="anthropic/claude-sonnet-4-20250514">
-                    <p class="form-hint">Ex: <code>anthropic/claude-sonnet-4-20250514</code>, <code>openai/gpt-4o</code>, <code>llama-3.3-70b-versatile</code></p>
+                <div class="provider-card" data-provider="backend">
+                    <div class="provider-card-header">
+                        <div class="provider-card-title">
+                            🖥️ Backend (fcc-server)
+                            <span class="provider-badge badge-key">CUSTOM</span>
+                        </div>
+                    </div>
+                    <div class="provider-card-desc">
+                        Use seu próprio servidor fcc-server como proxy. Requer servidor rodando.
+                    </div>
                 </div>
             </div>
+
+            <div id="providerConfig"></div>
 
             <div class="modal-actions">
-                <button class="btn btn-danger" id="resetBtn">Resetar</button>
                 <button class="btn btn-secondary" id="cancelSettingsBtn">Cancelar</button>
                 <button class="btn btn-primary" id="saveSettingsBtn">Salvar</button>
             </div>
@@ -570,35 +530,41 @@
     </div>
 
     <script>
-        // ============ PROVIDERS (modo direto) ============
-        const DIRECT_PROVIDERS = {
-            openrouter: {
-                name: 'OpenRouter',
-                url: 'https://openrouter.ai/api/v1/chat/completions',
-                defaultModel: 'anthropic/claude-sonnet-4-20250514',
-                hint: 'OpenRouter dá acesso a Claude, GPT-4, Llama e mais com uma única key.',
-                getKeyUrl: 'https://openrouter.ai/keys'
-            },
-            openai: {
-                name: 'OpenAI',
-                url: 'https://api.openai.com/v1/chat/completions',
-                defaultModel: 'gpt-4o-mini',
-                hint: 'Use sua key da OpenAI para GPT-4, GPT-4o, etc.',
-                getKeyUrl: 'https://platform.openai.com/api-keys'
-            },
-            anthropic: {
-                name: 'Anthropic',
-                url: 'https://api.anthropic.com/v1/messages',
-                defaultModel: 'claude-sonnet-4-20250514',
-                hint: 'Use sua key da Anthropic para Claude. Requer CORS habilitado.',
-                getKeyUrl: 'https://console.anthropic.com/'
+        // ============ PROVIDERS ============
+        const PROVIDERS = {
+            pollinations: {
+                name: 'Pollinations',
+                type: 'free',
+                needsKey: false,
+                url: 'https://text.pollinations.ai/openai',
+                defaultModel: 'openai',
+                models: ['openai', 'openai-large', 'mistral', 'llama', 'deepseek'],
+                hint: 'Gratuito, sem cadastro. Modelos: openai, openai-large, mistral, llama, deepseek'
             },
             groq: {
                 name: 'Groq',
+                type: 'free',
+                needsKey: true,
                 url: 'https://api.groq.com/openai/v1/chat/completions',
                 defaultModel: 'llama-3.3-70b-versatile',
-                hint: 'Groq é rápido e tem tier gratuito generoso.',
+                hint: 'Gratuito e rápido. Obtenha sua key em: console.groq.com/keys',
                 getKeyUrl: 'https://console.groq.com/keys'
+            },
+            openrouter: {
+                name: 'OpenRouter',
+                type: 'free',
+                needsKey: true,
+                url: 'https://openrouter.ai/api/v1/chat/completions',
+                defaultModel: 'meta-llama/llama-3.3-70b-instruct:free',
+                hint: 'Modelos gratuitos disponíveis. Obtenha sua key em: openrouter.ai/keys',
+                getKeyUrl: 'https://openrouter.ai/keys'
+            },
+            backend: {
+                name: 'Backend',
+                type: 'custom',
+                needsKey: false,
+                needsUrl: true,
+                hint: 'URL do seu fcc-server (ex: https://seu-app.railway.app)'
             }
         };
 
@@ -608,36 +574,20 @@
             chatHistory: [],
             images: [],
             isLoading: false,
-            config: loadConfig()
+            config: loadConfig(),
+            selectedProvider: 'pollinations'
         };
 
         function loadConfig() {
             try {
-                const saved = localStorage.getItem('luna_config_v2');
+                const saved = localStorage.getItem('luna_config_v3');
                 if (saved) return JSON.parse(saved);
             } catch (e) {}
-            return { mode: 'backend', backendUrl: '', backendModel: '', provider: 'openrouter', apiKey: '', model: '' };
+            return { provider: 'pollinations', model: '', apiKey: '', backendUrl: '' };
         }
 
         function saveConfig() {
-            localStorage.setItem('luna_config_v2', JSON.stringify(state.config));
-            updateStatusBadge();
-        }
-
-        function updateStatusBadge() {
-            const badge = document.getElementById('statusBadge');
-            if (state.config.mode === 'backend' && state.config.backendUrl) {
-                const modelName = state.config.backendModel || 'fcc-server';
-                badge.className = 'status-indicator status-ok';
-                badge.textContent = `✓ ${modelName.split('/').pop()}`;
-            } else if (state.config.mode === 'direct' && state.config.apiKey) {
-                const modelName = state.config.model || DIRECT_PROVIDERS[state.config.provider].defaultModel;
-                badge.className = 'status-indicator status-ok';
-                badge.textContent = `✓ ${modelName.split('/').pop()}`;
-            } else {
-                badge.className = 'status-indicator status-warn';
-                badge.textContent = '⚙️ Configurar';
-            }
+            localStorage.setItem('luna_config_v3', JSON.stringify(state.config));
         }
 
         // ============ ELEMENTOS ============
@@ -653,17 +603,9 @@
             imageGallery: $('imageGallery'),
             settingsBtn: $('settingsBtn'),
             settingsModal: $('settingsModal'),
-            providerSelect: $('providerSelect'),
-            apiKeyInput: $('apiKeyInput'),
-            modelInput: $('modelInput'),
-            providerHint: $('providerHint'),
-            backendUrlInput: $('backendUrlInput'),
-            backendModelInput: $('backendModelInput'),
-            testBackendBtn: $('testBackendBtn'),
-            backendTestResult: $('backendTestResult'),
             saveSettingsBtn: $('saveSettingsBtn'),
             cancelSettingsBtn: $('cancelSettingsBtn'),
-            resetBtn: $('resetBtn')
+            providerConfig: $('providerConfig')
         };
 
         // ============ UTILITÁRIOS ============
@@ -676,120 +618,63 @@
             return new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
         }
 
-        // ============ API DE CHAT - MODO BACKEND (fcc-server) ============
-        async function callBackendAPI(message) {
-            const baseUrl = state.config.backendUrl.replace(/\/$/, '');
-            const model = state.config.backendModel || 'anthropic/claude-sonnet-4-20250514';
-
-            // Monta o input como array de mensagens (formato OpenAI Responses)
-            const inputMessages = state.chatHistory.slice(-10).map(m => ({
-                role: m.role,
-                content: m.content
-            }));
-            inputMessages.push({ role: 'user', content: message });
-
-            // Chama o endpoint /v1/responses do fcc-server
-            // Formato baseado no Pydantic model OpenAIResponsesRequest
-            const response = await fetch(`${baseUrl}/v1/responses`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    model: model,
-                    input: inputMessages,
-                    instructions: 'Você é Luna, uma assistente prestativa, amigável e concisa. Responda em português brasileiro quando apropriado.',
-                    stream: false,
-                    temperature: 0.7,
-                    max_output_tokens: 2000,
-                    store: false
-                })
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                let errorMsg = `Erro ${response.status}`;
-                try {
-                    const errorJson = JSON.parse(errorText);
-                    errorMsg = errorJson.error?.message || errorJson.detail || errorMsg;
-                } catch (e) {
-                    errorMsg = errorText || errorMsg;
-                }
-                throw new Error(errorMsg);
-            }
-
-            const data = await response.json();
-
-            // Extrai texto da resposta (formato OpenAI Responses)
-            if (data.output && data.output.length > 0) {
-                const texts = [];
-                for (const item of data.output) {
-                    if (item.type === 'message' && item.content) {
-                        for (const c of item.content) {
-                            if (c.type === 'output_text' && c.text) {
-                                texts.push(c.text);
-                            } else if (c.text) {
-                                texts.push(c.text);
-                            }
-                        }
-                    }
-                }
-                if (texts.length > 0) return texts.join('\n');
-            }
-
-            // Fallback para formato Chat Completions (caso o backend retorne assim)
-            if (data.choices && data.choices[0]) {
-                return data.choices[0].message?.content || 'Sem resposta';
-            }
-
-            return 'Sem resposta do servidor';
-        }
-
-        // ============ API DE CHAT - MODO DIRETO ============
-        async function callDirectAPI(message) {
-            if (!state.config.apiKey) {
-                throw new Error('Configure sua API key nas configurações');
-            }
-
-            const provider = DIRECT_PROVIDERS[state.config.provider];
+        // ============ API DE CHAT ============
+        async function callChatAPI(message) {
+            const provider = PROVIDERS[state.config.provider];
             const model = state.config.model || provider.defaultModel;
 
             const messages = [
-                { role: 'system', content: 'Você é Luna, uma assistente prestativa, amigável e concisa. Responda em português brasileiro quando apropriado.' },
+                { role: 'system', content: 'Você é Luna, uma assistente prestativa, amigável e concisa. Responda em português brasileiro quando apropriado. Use emojis com moderação.' },
                 ...state.chatHistory.slice(-10),
                 { role: 'user', content: message }
             ];
 
-            let headers = {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${state.config.apiKey}`
-            };
+            let url, headers, body;
 
-            let body, url;
-
-            if (state.config.provider === 'anthropic') {
+            if (state.config.provider === 'pollinations') {
+                url = `${provider.url}/chat/completions`;
+                headers = { 'Content-Type': 'application/json' };
+                body = JSON.stringify({
+                    model: model,
+                    messages: messages,
+                    temperature: 0.7
+                });
+            } else if (state.config.provider === 'groq') {
                 url = provider.url;
                 headers = {
                     'Content-Type': 'application/json',
-                    'x-api-key': state.config.apiKey,
-                    'anthropic-version': '2023-06-01',
-                    'anthropic-dangerous-direct-browser-access': 'true'
+                    'Authorization': `Bearer ${state.config.apiKey}`
                 };
-                const systemMsg = messages.find(m => m.role === 'system');
-                const chatMessages = messages.filter(m => m.role !== 'system');
-                body = JSON.stringify({
-                    model: model,
-                    max_tokens: 2000,
-                    system: systemMsg?.content,
-                    messages: chatMessages
-                });
-            } else {
-                url = provider.url;
                 body = JSON.stringify({
                     model: model,
                     messages: messages,
                     temperature: 0.7,
                     max_tokens: 2000
+                });
+            } else if (state.config.provider === 'openrouter') {
+                url = provider.url;
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${state.config.apiKey}`,
+                    'HTTP-Referer': window.location.href,
+                    'X-Title': 'Luna App'
+                };
+                body = JSON.stringify({
+                    model: model,
+                    messages: messages,
+                    temperature: 0.7
+                });
+            } else if (state.config.provider === 'backend') {
+                const baseUrl = state.config.backendUrl.replace(/\/$/, '');
+                url = `${baseUrl}/v1/responses`;
+                headers = { 'Content-Type': 'application/json' };
+                body = JSON.stringify({
+                    model: model,
+                    input: messages,
+                    instructions: 'Você é Luna, uma assistente prestativa, amigável e concisa. Responda em português brasileiro quando apropriado.',
+                    stream: false,
+                    temperature: 0.7,
+                    max_output_tokens: 2000
                 });
             }
 
@@ -800,89 +685,31 @@
                 let errorMsg = `Erro ${response.status}`;
                 try {
                     const errorJson = JSON.parse(errorText);
-                    errorMsg = errorJson.error?.message || errorMsg;
+                    errorMsg = errorJson.error?.message || errorJson.detail || errorMsg;
                 } catch (e) {}
                 throw new Error(errorMsg);
             }
 
             const data = await response.json();
 
-            if (state.config.provider === 'anthropic') {
-                return data.content?.[0]?.text || 'Sem resposta';
-            } else {
-                return data.choices?.[0]?.message?.content || 'Sem resposta';
-            }
-        }
-
-        // Função unificada de chat
-        async function callChatAPI(message) {
-            if (state.config.mode === 'backend') {
-                if (!state.config.backendUrl) {
-                    throw new Error('Configure a URL do backend nas configurações');
-                }
-                return await callBackendAPI(message);
-            } else {
-                return await callDirectAPI(message);
-            }
-        }
-
-        // ============ TESTE DE CONEXÃO COM BACKEND ============
-        async function testBackendConnection() {
-            const url = elements.backendUrlInput.value.trim().replace(/\/$/, '');
-            if (!url) {
-                showBackendTest('error', '❌ Digite uma URL primeiro');
-                return;
-            }
-
-            elements.testBackendBtn.disabled = true;
-            elements.testBackendBtn.textContent = '🔄 Testando...';
-            showBackendTest('', '');
-
-            try {
-                // Tenta chamar um endpoint leve do fcc-server
-                // /v1/models é um endpoint padrão OpenAI-compatible
-                const response = await fetch(`${url}/v1/models`, {
-                    method: 'GET',
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    const modelCount = data.data?.length || 0;
-                    showBackendTest('success', `✅ Conectado! ${modelCount} modelos disponíveis no servidor.`);
-                } else if (response.status === 404) {
-                    // Alguns servidores não têm /v1/models, tenta /admin/api/config
-                    const response2 = await fetch(`${url}/admin/api/config`);
-                    if (response2.ok) {
-                        showBackendTest('success', '✅ Conectado ao fcc-server!');
-                    } else {
-                        showBackendTest('error', `⚠️ Servidor respondeu mas retornou ${response.status}. Verifique se é um fcc-server.`);
+            if (state.config.provider === 'backend') {
+                if (data.output && data.output.length > 0) {
+                    const texts = [];
+                    for (const item of data.output) {
+                        if (item.type === 'message' && item.content) {
+                            for (const c of item.content) {
+                                if (c.text) texts.push(c.text);
+                            }
+                        }
                     }
-                } else {
-                    showBackendTest('error', `❌ Erro ${response.status}: ${response.statusText}`);
+                    if (texts.length > 0) return texts.join('\n');
                 }
-            } catch (error) {
-                if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-                    showBackendTest('error', `❌ Não foi possível conectar. Verifique:
-                        • A URL está correta?
-                        • O servidor está rodando?
-                        • O servidor permite CORS do GitHub Pages?`);
-                } else {
-                    showBackendTest('error', `❌ ${error.message}`);
-                }
-            } finally {
-                elements.testBackendBtn.disabled = false;
-                elements.testBackendBtn.textContent = '🔌 Testar conexão';
             }
+
+            return data.choices?.[0]?.message?.content || 'Sem resposta';
         }
 
-        function showBackendTest(type, message) {
-            elements.backendTestResult.className = `connection-test ${type}`;
-            elements.backendTestResult.textContent = message;
-            elements.backendTestResult.style.whiteSpace = 'pre-line';
-        }
-
-        // ============ API DE IMAGEM (Pollinations - gratuito!) ============
+        // ============ API DE IMAGEM ============
         async function callImageAPI(prompt) {
             const seed = Math.floor(Math.random() * 1000000);
             const encodedPrompt = encodeURIComponent(prompt);
@@ -923,15 +750,6 @@
         async function sendMessage() {
             const message = elements.chatInput.value.trim();
             if (!message || state.isLoading) return;
-
-            const needsConfig = (state.config.mode === 'backend' && !state.config.backendUrl) ||
-                                (state.config.mode === 'direct' && !state.config.apiKey);
-
-            if (needsConfig) {
-                openSettings();
-                alert('Configure a conexão primeiro!');
-                return;
-            }
 
             state.isLoading = true;
             elements.sendBtn.disabled = true;
@@ -1046,20 +864,9 @@
 
         // ============ CONFIGURAÇÕES ============
         function openSettings() {
-            // Preenche com valores atuais
-            elements.backendUrlInput.value = state.config.backendUrl || '';
-            elements.backendModelInput.value = state.config.backendModel || '';
-            elements.providerSelect.value = state.config.provider || 'openrouter';
-            elements.apiKeyInput.value = state.config.apiKey || '';
-            elements.modelInput.value = state.config.model || '';
-            updateProviderHint();
-            
-            // Ativa a tab correta
-            const tabName = state.config.mode || 'backend';
-            document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === `tab-${tabName}`));
-            
-            elements.backendTestResult.className = 'connection-test';
+            state.selectedProvider = state.config.provider || 'pollinations';
+            updateProviderCards();
+            renderProviderConfig();
             elements.settingsModal.classList.add('active');
         }
 
@@ -1067,38 +874,95 @@
             elements.settingsModal.classList.remove('active');
         }
 
-        function updateProviderHint() {
-            const provider = DIRECT_PROVIDERS[elements.providerSelect.value];
-            elements.providerHint.innerHTML = `${provider.hint} <a href="${provider.getKeyUrl}" target="_blank">Obter key →</a>`;
-            if (!elements.modelInput.value) {
-                elements.modelInput.placeholder = provider.defaultModel;
+        function updateProviderCards() {
+            document.querySelectorAll('.provider-card').forEach(card => {
+                card.classList.toggle('selected', card.dataset.provider === state.selectedProvider);
+            });
+        }
+
+        function renderProviderConfig() {
+            const provider = PROVIDERS[state.selectedProvider];
+            let html = '';
+
+            if (provider.needsKey) {
+                html += `
+                    <div class="form-group">
+                        <label class="form-label">API Key</label>
+                        <input type="password" class="form-input" id="cfgApiKey" 
+                            value="${state.config.apiKey || ''}" 
+                            placeholder="Cole sua API key aqui">
+                        <p class="form-hint">
+                            ${provider.hint}
+                            ${provider.getKeyUrl ? `<br><a href="${provider.getKeyUrl}" target="_blank">Obter key gratuita →</a>` : ''}
+                        </p>
+                    </div>
+                `;
             }
+
+            if (provider.needsUrl) {
+                html += `
+                    <div class="form-group">
+                        <label class="form-label">URL do Backend</label>
+                        <input type="text" class="form-input" id="cfgBackendUrl" 
+                            value="${state.config.backendUrl || ''}" 
+                            placeholder="https://seu-app.railway.app">
+                        <p class="form-hint">${provider.hint}</p>
+                    </div>
+                `;
+            }
+
+            if (state.selectedProvider !== 'backend') {
+                const models = provider.models || [];
+                if (models.length > 0) {
+                    html += `
+                        <div class="form-group">
+                            <label class="form-label">Modelo</label>
+                            <select class="form-select" id="cfgModel">
+                                ${models.map(m => `<option value="${m}" ${m === (state.config.model || provider.defaultModel) ? 'selected' : ''}>${m}</option>`).join('')}
+                            </select>
+                            <p class="form-hint">${provider.hint}</p>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="form-group">
+                            <label class="form-label">Modelo</label>
+                            <input type="text" class="form-input" id="cfgModel" 
+                                value="${state.config.model || ''}" 
+                                placeholder="${provider.defaultModel}">
+                            <p class="form-hint">${provider.hint}</p>
+                        </div>
+                    `;
+                }
+            } else {
+                html += `
+                    <div class="form-group">
+                        <label class="form-label">Modelo (opcional)</label>
+                        <input type="text" class="form-input" id="cfgModel" 
+                            value="${state.config.model || ''}" 
+                            placeholder="anthropic/claude-sonnet-4-20250514">
+                        <p class="form-hint">Formato: provider/model. Ex: anthropic/claude-sonnet-4-20250514</p>
+                    </div>
+                `;
+            }
+
+            elements.providerConfig.innerHTML = html;
         }
 
         function saveSettings() {
-            const activeTab = document.querySelector('.tab.active').dataset.tab;
-            state.config.mode = activeTab;
+            state.config.provider = state.selectedProvider;
             
-            if (activeTab === 'backend') {
-                state.config.backendUrl = elements.backendUrlInput.value.trim();
-                state.config.backendModel = elements.backendModelInput.value.trim();
-            } else {
-                state.config.provider = elements.providerSelect.value;
-                state.config.apiKey = elements.apiKeyInput.value.trim();
-                state.config.model = elements.modelInput.value.trim();
-            }
+            const modelInput = $('cfgModel');
+            if (modelInput) state.config.model = modelInput.value.trim();
+            
+            const apiKeyInput = $('cfgApiKey');
+            if (apiKeyInput) state.config.apiKey = apiKeyInput.value.trim();
+            
+            const backendUrlInput = $('cfgBackendUrl');
+            if (backendUrlInput) state.config.backendUrl = backendUrlInput.value.trim();
             
             saveConfig();
             closeSettings();
-            updateStatusBadge();
-        }
-
-        function resetSettings() {
-            if (!confirm('Tem certeza? Isso vai apagar todas as configurações.')) return;
-            localStorage.removeItem('luna_config_v2');
-            state.config = { mode: 'backend', backendUrl: '', backendModel: '', provider: 'openrouter', apiKey: '', model: '' };
-            closeSettings();
-            updateStatusBadge();
         }
 
         // ============ EVENT LISTENERS ============
@@ -1115,13 +979,11 @@
             });
         });
 
-        // Tabs do modal
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                tab.classList.add('active');
-                $(`tab-${tab.dataset.tab}`).classList.add('active');
+        document.querySelectorAll('.provider-card').forEach(card => {
+            card.addEventListener('click', () => {
+                state.selectedProvider = card.dataset.provider;
+                updateProviderCards();
+                renderProviderConfig();
             });
         });
 
@@ -1145,48 +1007,14 @@
         elements.settingsBtn.addEventListener('click', openSettings);
         elements.saveSettingsBtn.addEventListener('click', saveSettings);
         elements.cancelSettingsBtn.addEventListener('click', closeSettings);
-        elements.resetBtn.addEventListener('click', resetSettings);
-        elements.testBackendBtn.addEventListener('click', testBackendConnection);
-        elements.providerSelect.addEventListener('change', updateProviderHint);
 
         elements.settingsModal.addEventListener('click', (e) => {
             if (e.target === elements.settingsModal) closeSettings();
         });
 
         // ============ INICIALIZAÇÃO ============
-        updateStatusBadge();
         elements.chatInput.focus();
-
-        // Se não tem configuração, abre modal
-        const needsSetup = (state.config.mode === 'backend' && !state.config.backendUrl) ||
-                          (state.config.mode === 'direct' && !state.config.apiKey);
-        if (needsSetup) {
-            setTimeout(openSettings, 500);
-        }
     </script>
 </body>
 </html>
 
-
-
-              <script>
-                              // Chama POST /v1/responses do seu fcc-server
-fetch(`${backendUrl}/v1/responses`, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    model: "anthropic/claude-sonnet-4-20250514",
-    input: [...mensagens],
-    instructions: "Você é Luna...",
-    stream: false,
-    temperature: 0.7,
-    max_output_tokens: 2000,
-    store: false
-  })
-})
-
-
-              </script>
-                        </body>
-                        </html>
-                    
